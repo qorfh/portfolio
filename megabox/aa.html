@@ -1,0 +1,213 @@
+<html>
+  <head>
+  <title>My Now Amazing Webpage</title>
+  </head>
+  <style type="text/css">
+    * {
+      font-family: 'Raleway', sans-serif;
+        font-weight: 300;
+}    
+
+
+  #toggle {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    #toggle div.bar,
+    #toggle div.bar:before,
+    #toggle div.bar:after {
+        width: 100%;
+        height: 3px;
+        background: #333;
+    }
+
+    #toggle div.bar {
+        position: relative;
+        transform: translateY(9px);
+        transition: all 0.3s 0.3s ease;
+    }
+
+    #toggle div.bar:before {
+        content: " ";
+        position: absolute;
+        bottom: 9px;
+        transition: bottom 0.3s 0.3s ease, transform 0.3s ease;
+    }
+
+     #toggle div.bar:after {
+        content: " ";
+        position: absolute;
+        top: 9px;
+        transition: top 0.3s 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Animation */
+
+    #toggle div.bar.animate {
+        background: rgba(255, 255, 255, 0);
+    }
+
+    #toggle div.bar.animate:after {
+        top: 0;
+        transform: rotate(45deg);
+        transition: top 0.3s ease, transform 0.3s 0.3s ease;
+    }
+
+    #toggle div.bar.animate:before {
+        bottom: 0;
+        transform: rotate(-45deg);
+        transition: bottom 0.3s ease, transform 0.3s 0.3s ease;
+    }
+
+
+    #overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease, max-height 0s 0.6s ease;
+        z-index: 100;
+        opacity: 1;
+        background: black;
+    }
+
+    #overlay nav {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+    }
+
+    #overlay nav ul,
+    #overlay nav ul li {
+        margin: 0;
+        padding: 0;
+        display: block;
+        position: static;
+    }
+
+     #overlay nav ul {
+        padding: 30px;
+     }
+
+     #overlay nav ul li {
+        margin-bottom: 10px;
+        opacity: 0;
+        transition: all 0.9s 0s ease;
+        margin-left: 60px;
+     }
+
+     #overlay nav ul li a {
+       position: relative;
+       height: 50px;
+       display: inline-block;
+       color: #ffffff;
+       transition: all 0.6s 0s ease;
+     }
+
+     #overlay nav ul li a:after {
+       content: " ";
+       position: absolute;
+       left: 0;
+       bottom: 0;
+       width: 0;
+       opacity: 0;
+       height: 1px;
+       background: white;
+       transition: all 0.6s 0s ease;
+     }
+
+     #overlay nav ul li a:hover:after {
+       width: 100%;
+       opacity: 1;
+     }
+
+     #overlay nav ul li a:hover {
+       color: #888888;
+     }
+
+     #page.overlay #overlay nav ul li:nth-child(1) {
+       transition: all 0.9s 0.6s ease;
+     }
+     #page.overlay #overlay nav ul li:nth-child(2) {
+       transition: all 0.9s 0.8s ease;
+     }
+     #page.overlay #overlay nav ul li:nth-child(3) {
+       transition: all 0.9s 1.0s ease;
+     }
+     #page.overlay #overlay nav ul li:nth-child(4) {
+       transition: all 0.9s 1.2s ease;
+     }
+     #page.overlay #overlay nav ul li:nth-child(5) {
+       transition: all 0.9s 1.4s ease;
+     }
+
+
+     #overlay nav ul li a {
+        text-transform: normal;
+        font-size: 35px;
+        font-weight: 300;
+        color: white;
+        text-decoration: none;
+     }
+
+    #page.overlay #overlay {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        max-height: 1200px;
+        opacity: 1;
+        z-index: 100;
+        transition: all 0.3s ease;
+    }
+
+    #page.overlay #overlay nav ul li {
+
+      margin-left: 0;
+      opacity: 1;
+    }
+  </style>
+  <body>
+    <div id="page">
+    <div id="toggle">
+      <div class="bar"></div>
+    </div>
+    <section id="overlay">
+      <nav>
+        <ul>
+          <li><a href="#">Homepage</a></li>
+          <li><a href="#">Company</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">About us</a></li>
+          <li><a href="#">Contacts</a></li>
+        </ul>
+      </nav>
+    </section>
+  </div>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script type="text/javascript" src="js/slick.min.js"></script>
+
+  <script type="text/javascript">
+   
+$('#toggle').click(function() {
+    $('#toggle .bar').toggleClass('animate');
+    $('#page').toggleClass('overlay');
+});
+    
+
+  </script>
+
+  </body>
+</html>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="css/reset.css">
+        <style>
+            .movie_age15{   
+                background-position: -90px -200px; 
+                width: 25px; height: 26px;
+            }
+            .movie_age12{   
+                background-position: -71px 0px;
+            }
+            .movie_age_all{   
+                background-position: 0px -200px;
+                width: 20px; height: 21px;
+            }
+            .contents{
+                width:1000px;
+                height: 800px;
+                padding: 50px 25px;
+                margin: 0 auto;
+                border: 1px solid red;
+            }
+            .row1{
+                display:flex;
+            }
+            .row1 .left_wrap{
+                display: inline-block;
+                width: 230px;
+                margin-right: 25px;
+            }
+            .row1 .left_wrap img{
+                height: 336px;
+            }
+            .row1 .right_wrap{
+                display: inline-block;
+                width: 620px; height: 336px;
+                border: 1px solid red;
+            }
+            .row1 .right_wrap span{
+                background-image: url(img/bg_age_l.png);
+                display: inline-block;
+                width: 30px; height: 32px;
+            }
+            .row1 .right_wrap .title{
+                line-height: 32px;
+                border-bottom: 1px solid #e5e5e5;
+            }
+            .row1 .right_wrap .title h2{
+                font-size: 32px;
+                padding-left: 32px;
+                font-weight: bold;
+            }
+            .row1 .right_wrap .title p{
+                color: #666;
+            }
+        </style>
+    </head>
+    <body>
+        <section id="movie_detail">
+            <div class="contents">
+                <div class="row1">
+                    <div class="left_wrap">
+                        <img id="movie_img" src="" alt="">
+                    </div>
+                    <div class="right_wrap">
+                        <div class="title">
+                            <span class="ir_su movie_age12">12세관람가</span>
+                            <h2></h2>
+                            <p>Avengers: Endgame , 2019</p>
+                        </div>
+                        <div class="text">
+                            <div class="reservation_wrap">
+                                <span class="small_star">
+                                    <span class="fill"></span>
+                                </span>
+                                <ul>
+                                    <li>
+                                        <strong>타입:</strong>
+                                        디지털(자막
+                                        ), ATMOS(자막), 3D(자막), 3D ATMOS(자막)
+                                    </li>
+                                    <li>
+                                        <strong>개봉일:</strong>
+                                        2019.04.24
+                                    </li>
+                                    <li>
+                                        <strong>감독:</strong>
+                                        안소니 루소, 조 루소
+                                    </li>
+                                    <li>
+                                        <strong>출연진:</strong>
+                                        로버트 다우니 주니어, 크리스 에반스, 마크 러팔로, 크리스 헴스워스, 스칼렛 요한슨, 제레미 레너, 돈 치들, 폴 러드, 브리 라슨, 카렌 길런, 브래들리 쿠퍼, 조슈 브롤린
+                                    </li>
+                                    <li>
+                                        <strong>장르:</strong>
+                                        SF, 액션 / 181 분
+                                    </li>
+                                    <li>
+                                        <strong>누적관객:</strong>
+                                        13,064,935명
+                                    </li>
+                                    <li>
+                                        <strong>전일관객:</strong>
+                                        50,848명
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="rating"></div>
+                    </div>
+                </div>
+                <div class="row2">
+                    <h3>줄거리</h3>
+                    <div class="text">
+                        인피니티 워 이후 절반만 살아남은 지구 <br> 
+                        마지막 희망이 된 어벤져스 <br>
+                        먼저 떠난 그들을 위해 모든 것을 걸었다! <br>
+                        <br>
+                        위대한 어벤져스<br>
+                        운명을 바꿀 최후의 전쟁이 펼쳐진다!
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                var movies = [
+                    { "id":1, "type":1, "name":"어벤져스: 엔드게임", "age":12, "img":"m_1", "date":"2019-4-23"},
+                    { "id":2, "type":1, "name":"나의 특별한 형제", "age":12, "img":"m_2"},
+                    { "id":3, "type":1, "name":"명탐정 피카츄", "age":"_all", "img":"m_3"},
+                    { "id":4, "type":1, "name":"(더빙) 뽀로로 극장판 보물섬 대모험", "age":"_all", "img":"m_4"},
+                    { "id":5, "type":2, "name":"어벤져스: 엔드게임", "age":12, "img":"m_1"},
+                    { "id":6, "type":2, "name":"[응원상영] 킹 오브 프리즘 -샤이니 세븐 스타즈- Ⅲ 레오x유우x알렉", "age":12, "img":"m_5"},
+                    { "id":7, "type":2, "name":"미스 스티븐스", "age":15, "img":"m_6"},
+                    { "id":8, "type":2, "name":"굿바이 마이 러브NK: 붉은 청춘", "age":15, "img":"m_7"},
+                    { "id":9, "type":3, "name":"[GET9] 플로리다 프로젝트", "age":12, "img":"m_8"},
+                    { "id":10, "type":3, "name":"명탐정 피카츄", "age":"_all", "img":"m_3"},
+                    { "id":11, "type":3, "name":"걸캅스", "age":15, "img":"m_9"},
+                    { "id":12, "type":3, "name":"라플라스의 마녀", "age":15, "img":"m_10"},
+                    { "id":13, "type":4, "name":"[라이브뷰잉] 아이돌 마스터 Side M 4th 스테이지 ~TR", "age":12, "img":"m_11"},
+                    { "id":14, "type":4, "name":"[오페라] 마술피리", "age":15, "img":"m_12"},
+                    { "id":15, "type":4, "name":"안도 타다오", "age":"_all", "img":"m_13"},
+                    { "id":16, "type":4, "name":"미스 스티븐스", "age":12, "img":"m_6"}
+                ];
+
+                var movie_id = getUrlParameter('movie_id');
+                var movie = searchItem(movie_id);
+
+                $("#movie_img").attr({
+                    "src":"img/"+movie.img+".jpg",
+                    "art":movie.name
+                    });
+                $(".title h2").html(movie.name);
+
+                function searchItem(data){
+                    for(var i in movies){
+                        if(data == movies[i].id){
+                            return movies[i];
+                        }
+                    }
+                }
+
+                function getUrlParameter(key){
+                    var pageUrl = window.location.search.substring(1); // ?movie_id=1 -> movie_id=1
+                    // movie_id=1&price=5000
+                    var urlVariables = pageUrl.split("&");
+                    // ["movie_id=1", "price=5000"];
+                    var parameterName;
+                    for(var i in urlVariables){
+                        parameterName = urlVariables[i].split("=");
+                        // ["movie_id", "1"] parameterName[0]:movie_id
+                        // ["price", "5000"] parameterName[1]:1
+                        if(parameterName[0] == key){
+                            return parameterName[1];
+                        }
+                    }
+                }
+            });
+            
+        </script>
+    </body>
+</html>

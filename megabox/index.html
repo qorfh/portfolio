@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<title>라이프시어터, 메가박스</title>
+
+	<!-- favicon -->
+	<link rel="icon" type="image/x-icon" href="http://megabox.co.kr/favicon.ico" />
+
+	<!-- style -->
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/font-awesome.css">
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- 웹 폰트 -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&amp;subset=korean" rel="stylesheet">
+</head>
+<body>
+	<header id="header">
+		<div class="header">
+			<div class="container">
+				<h1 class="header_logo">
+					<a href="#"><img class="logo" src="img/logo.png" alt="megabox logo"></a>
+					<a href="#"><img class="logo_sub" src="img/logo-sub.png" alt="megabox logo-sub"></a>
+				</h1>
+				<nav class="header_nav">
+					<ul>
+						<li><a href="#">영화</a></li>
+						<li><a href="#">큐레이션</a></li>
+						<li><a href="#">영화관</a></li>
+						<li><a href="#">특별관</a></li>
+						<li><a href="#">스토어</a></li>
+						<li><a href="#">이벤트</a></li>
+						<li><a href="#">로그인</a></li>
+					</ul>
+				</nav>
+				<button type="button" class="is-open">
+					<img src="./img/navBtn.gif" alt="메뉴 열기">
+				</button>
+			</div>
+		</div>
+		<!-- m-navigation -->
+		<nav class="m-nav">
+			<ul>
+				<li><a href="#">영화</a></li>
+				<li><a href="#">큐레이션</a></li>
+				<li><a href="#">영화관</a></li>
+				<li><a href="#">특별관</a></li>
+				<li><a href="#">스토어</a></li>
+				<li><a href="#">이벤트</a></li>
+				<li><a href="#">로그인</a></li>
+			</ul>
+			<button type="button" class="is-close-menu" aria-label="메뉴 닫기">x</button>
+		</nav>
+		<!-- //m-navigation -->
+		<div class="header_ban">
+			<div class="container">
+				<!-- banner_menu -->
+				<div class="banner_menu">
+					<ul class="ban_menu_left">
+						<li><button type="button"><i class="fa fa-bars"></i> 전체메뉴</button></li>
+						<li><a href="#">필름 소사이어티</a></li>
+						<li><a href="#">클래식 소사이어티</a></li>
+					</ul>
+					<ul class="ban_menu_right">
+						<li><a href="#">고객센터</a></li>
+						<li><a href="#">멤버십</a></li>
+						<li><a href="#">VIP</a></li>
+						<li><button type="button" class="timetable" title="상영시간표"></button></li>
+						<li><button type="button" class="reservation" title="빠른예매"></button></li>
+					</ul>
+				</div>
+				<!-- //banner_menu -->
+			</div>
+			<!-- slide_img -->
+			<div class="slide_img">
+				<div class="slides fade on">
+					<a href="#" title="<어벤져스: 엔드게임>">
+						<div class="container">
+							<div class="slide_text">
+								<strong>어벤져스:엔드게임</strong>
+								<span>Avengers:Endgame</span>
+								<p>먼저 떠난 그들을 위해 모든 것을 걸었다!</p>
+							</div>
+						</div>
+						
+					</a>
+				</div>
+				<div class="slides fade">
+					<a href="#" title="오페라 <마술피리>">
+						<div class="container">
+							<div class="slide_text">
+								<strong>마술피리</strong>
+								<span>Magic Flute</span>
+								<p>모차르트의 사상이 집약된 작곡가 최후의 명작 오페라</p>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="slides fade">
+					<a href="#" title="<어벤져스:엔드게임> N차 관람 감사 이벤트"></a>
+				</div>
+				<div class="slides fade">
+					<a href="#" title="<나의 특별한 형제>">
+						<div class="container">
+							<div class="slide_text shadow">
+								<strong>나의 특별한 형제</strong>
+								<span>INSEPARABLES BROS</span>
+								<p>신하균 X 이광수 2인 1조 인생실화</p>
+							</div>
+						</div>
+					</a>
+				</div>
+				<div class="slides fade">
+					<a href="#" title="대전중앙로 Grand Opening"></a>
+				</div>
+			</div>
+			<!-- //slide_img -->
+			<!-- banner-slide-btn -->
+			<div class="slide_btn">
+				<a href="#" class="prev" title="이전 이미지"></a>
+				<a href="#" class="next" title="다음 이미지"></a>
+			</div>
+			<!-- //banner-slide-btn -->
+			<!-- slide_bottom__dot & control -->
+			<div class="slide_bottom">
+				<div class="slide_dot"></div>
+				<div class="controls">
+					<a href="#" class="auto" title="재생"></a>
+				</div>
+			</div>
+			<!-- //slide_bottom -->
+		</div>
+	</header>
+	<main id="main">
+		<!-- movie_list -->
+		<section id="movie_list">
+			<div class="container">
+				<!-- list_title -->
+				<h2 class="ir_su">박스오피스|최신개봉작|상영예정작|큐레이션</h2>
+				<ul class="list_title">
+					<li class="list_menu active">
+						<a href="#">박스오피스</a>
+					</li>
+					<li class="list_menu">
+						<a href="#">최신개봉작</a>
+					</li>
+					<li class="list_menu">
+						<a href="#">상영예정작</a>
+					</li>
+					<li class="list_menu">
+						<a href="#">큐레이션</a>
+					</li>
+				</ul>
+				<!-- //list_title -->
+				<!-- movies -->
+				<div class="movies">
+					<div class="active">
+						<ul class="movie_list"></ul>
+					</div>
+					<div>
+						<ul class="movie_list"></ul>
+					</div>
+					<div>
+						<ul class="movie_list"></ul>
+					</div>
+					<div>
+						<ul class="movie_list"></ul>
+					</div>
+				</div>
+				<!-- //movies -->
+			</div>
+		</section>
+		<!-- //movie_list -->
+		<!-- content_event1 -->
+		<section id="content_event1">
+			<div class="container">
+				<h2 class="tit">새로운 이벤트</h2>
+				<div class="event">
+					<div class="evebox1">
+						<div class="eveSlide_wrap">
+							<!-- eveSlide_img -->
+							<div class="eveSlide_img">
+								<div class="eveSlides">
+									<a href="#">
+										<img src="img/new_e01.jpg" alt="<어벤져스> MX관람인증 이벤트">
+									</a>
+								</div>
+								<div class="eveSlides">
+									<a href="#">
+										<img src="img/new_e02.jpg" alt="[VIP메가찬스] 베스트셀러 저자와의 만남!">
+									</a>
+								</div>
+								<div class="eveSlides">
+									<a href="#">
+										<img src="img/new_e03.jpg" alt="북토크인시네마">
+									</a>
+								</div>
+								<div class="eveSlides">
+									<a href="#">
+										<img src="img/new_e04.jpg" alt="SKT 데이터PLUS 혜택패키지!">
+									</a>
+								</div>
+							</div>
+							<!-- //eveSlide_img -->
+							<!-- event_bottom__dot & control -->
+							<div class="e_bottom">
+								<div class="e_dot">
+									<a href="#"></a>
+									<a href="#"></a>
+									<a href="#"></a>
+									<a href="#"></a>
+								</div>
+								<div class="e_controls">
+									<a href="#" class="e_auto" title="재생"></a>
+								</div>
+							</div>
+							<!-- event_bottom__dot & control -->
+						</div>
+						<!-- evebox2 -->
+						<div class="evebox2">
+							<a href="#">
+								<img src="img/event03.jpg" alt="어벤져스:엔드게임 절찬 상영중 스페셜 경품 이벤트" class="e_img2">
+							</a>
+							<a href="#">
+								<img src="img/event04.jpg" alt="메가박스 스토어 더 즐거운 영화관람을 위해 다양한 스토어 상품과 함께하세요" class="e_img3">
+							</a>
+						</div>
+						<!-- //evebox2 -->
+					</div>
+					<!-- evebox3 -->
+					<div class="evebox3">
+						<a href="#">
+							<img src="img/event05.jpg" alt="마티네 요금제" class="e_img4">
+						</a>
+					</div>
+					<!-- //evebox3 -->
+				</div>
+			</div>
+		</section>
+		<!-- //content_event1 -->
+		<!-- grand_opening -->
+		<article id="grand_opening">
+			<div class="container">
+				<h2  class="ir_su">그랜드 오프닝 극장</h2>
+				<div>
+					<a href="#"><span class="ir_pm grand">grand_opening</span></a>
+				</div>
+				<div class="new_open">
+					<h4>신규오픈</h4>
+					<span>경상남도</span>
+					<span class="new">양산라피에스타</span>
+					<span>4월 오픈 예정</span>
+				</div>
+			</div>
+		</article>
+		<!-- //grand_opening -->
+		<!-- content_event2 -->
+		<section id="content_event2">
+			<div class="container">
+				<h2 class="tit">제휴 이벤트</h2>
+				<div class="content_event2">
+					<div>
+						<a href="#" class="e-left eve2-1"><span class="ir_pm">[교보문고X메가박스] 북토크 in 시네마 이벤트</span></a>
+						<a href="#" class="e-left eve2-2"><span class="ir_pm">SKT 데이터PLUS 혜택패키지!</span></a>
+					</div>
+					<div>
+						<a href="#" class="e-left eve2-3"><span class="ir_pm">GS칼텍스 I am your cinema</span></a>
+						<a href="#" class="e-left eve2-4"><span class="ir_pm">T멤버십 VIP Pick</span></a>
+					</div>
+					<div>
+						<a href="#" class="eve2-5"><span class="ir_pm">존윅3 파라벨룸 6월 대개봉 30초 예고편 확인하러가기</span></a>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- //content_event2 -->
+		<!-- #customer -->
+		<section id="customer">
+			<div class="container">
+				<!-- notice -->
+				<div>
+					<span class="more">공지사항 더보기</span>
+					<h3 class="tit">공지사항</h3>
+					<ul class="notice">
+						<li class="on"><a href="#">전체공지</a>
+							<ul>
+								<li>
+									<p>
+										<strong>전체</strong>
+										<span>| 2019.05.07</span>
+									</p>
+									<a href="#">&#91;무대인사&#93; &lt;나의 특별한 형제&gt; 2주차 (5/11~5/12)</a>
+								</li>
+								<li>
+									<p>
+										<strong>전체</strong>
+										<span>| 2019.05.02</span>
+									</p>
+									<a href="#">&#91;라이브뷰잉&#93; Poppin'Party×SILENT SIREN「NO GIRL NO CRY」진행 안내</a>
+								</li>
+								<li>
+									<p>
+										<strong>전체</strong>
+										<span>| 2019.04.26</span>
+									</p>
+									<a href="#">&#91;공지&#93; 페이나우 간편결제수단 서비스 종료 안내</a>
+								</li>
+								<li>
+									<p>
+										<strong>전체</strong>
+										<span>| 2019.04.26</span>
+									</p>
+									<a href="#">&#91;무대인사&#93; &lt;배심원들&gt; 1주차 (5/11~5/15)</a>
+								</li>
+							</ul>
+						</li>
+						<li><a href="#">영화관 공지</a>
+							<ul>
+								<li>
+									<p>
+										<strong>코엑스</strong>
+										<span>| 2019.05.07</span>
+									</p>
+									<a href="#">&#91;코엑스&#93; 상영 시간 조정 안내(5/13)</a>
+								</li>
+								<li>
+									<p>
+										<strong>상암</strong>
+										<span>| 2019.05.07</span>
+									</p>
+									<a href="#">&#91;상암월드컵경기장&#93; K-리그 경기에 따른 주차안내(5/11)</a>
+								</li>
+								<li>
+									<p>
+										<strong>부산대</strong>
+										<span>| 2019.05.02</span>
+									</p>
+									<a href="#">&#91;부산대&#93; 화재 경보기 오작동 관련 안내</a>
+								</li>
+								<li>
+									<p>
+										<strong>양주</strong>
+										<span>| 2019.05.02</span>
+									</p>
+									<a href="#">&#91;양주&#93; 화재 경보기 오작동 관련 안내</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<!-- //notice -->
+				<!-- cardList -->
+				<div>
+					<span class="more">메가박스 할인카드 더보기</span>
+					<h3 class="tit">메가박스 할인카드</h3>
+					<ul class="cardList">
+						<li>
+							<a href="#">
+								<img src="img/card1.png" alt="T멤버십 카드">
+								<div class="card_discount">
+									<strong>T멤버십 일반</strong>
+									<span>
+										영화 2000원 할인
+										<br>
+										(1일 5매)
+									</span>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/card2.png" alt="LG U+">
+								<div class="card_discount">
+									<strong>LG U+</strong>
+									<span>
+										영화 1000원 현장 할인
+										<br>
+										(1일 1회 / 월 4회)
+									</span>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/card3.png" alt="중앙멤버십">
+								<div class="card_discount">
+									<strong>중앙멤버십</strong>
+									<span>
+										현장할인, 인터넷할인
+										<br>
+										(연 24회)
+									</span>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- //cardList -->
+				<!-- customer -->
+				<div>
+					<h3 class="tit">고객센터</h3>
+					<ul class="customer">
+						<li>
+							<a href="#">
+								<span></span>
+								<strong>1:1문의</strong>
+							</a>
+						</li><!--
+					 --><li>
+							<a href="#">
+								<span></span>
+								<strong>단체관람/대관문의</strong>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span></span>
+								<strong>자주묻는질문</strong>
+							</a>
+						</li><!--
+						 --><li>
+							<a href="#">
+								<span></span>
+								<strong>분실물 문의/접수</strong>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!-- //customer -->
+			</div>
+		</section>
+		<!-- #customer -->
+		<!-- ad -->
+		<article class="ad">
+			<div class="container">
+				<h2 class="ir_su">skt vip만이 누릴 수 있는 혜택 연 6회, 취향 따라 마음 가는 대로, 직접 골라 누리는 특별한 혜택!</h2>
+				<a href="#">
+					<img src="img/ad.jpg" alt="skt vip만이 누릴 수 있는 혜택 연 6회, 취향 따라 마음 가는 대로, 직접 골라 누리는 특별한 혜택!">
+				</a>
+				
+			</div>
+		</article>
+		<!-- //ad -->
+		<!-- footer_teather -->
+		<article class="footer_teather">
+			<div class="container">
+				<h4>메가박스 영화관 찾기</h4>
+				<ul class="teather">
+					<li>
+						<span>서울</span>
+						<ul class="area">
+							<li><a href="#">강남</a></li>
+							<li><a href="#">강남대로(씨티)</a></li>
+							<li><a href="#">강동</a></li>
+							<li><a href="#">군자</a></li>
+							<li><a href="#">동대문</a></li>
+							<li><a href="#">마곡</a></li>
+							<li><a href="#">목동</a></li>
+							<li><a href="#">상봉</a></li>
+							<li><a href="#">상암월드컵경기장</a></li>
+							<li><a href="#">센트럴</a></li>
+							<li><a href="#">송파파크하비오</a></li>
+							<li><a href="#">신촌</a></li>
+							<li><a href="#">은평</a></li>
+							<li><a href="#">이수</a></li>
+							<li><a href="#">창동</a></li>
+							<li><a href="#">코엑스</a></li>
+							<li><a href="#">화곡</a></li>
+							<li><a href="#">ARTNINE</a></li>
+							<li><a href="#">EOE4</a></li>
+						</ul>
+					</li>
+					<li>
+						<span>경기</span>
+						<ul class="area">
+							<li><a href="#">고양스타필드</a></li>
+							<li><a href="#">김포</a></li>
+							<li><a href="#">김포한강신도시</a></li>
+							<li><a href="#">남양주</a></li>
+							<li><a href="#">동탄</a></li>
+							<li><a href="#">미사강변</a></li>
+							<li><a href="#">백석</a></li>
+							<li><a href="#">별내</a></li>
+							<li><a href="#">분당</a></li>
+							<li><a href="#">수원</a></li>
+							<li><a href="#">수원남문</a></li>
+							<li><a href="#">시흥배곧</a></li>
+							<li><a href="#">안산중앙</a></li>
+							<li><a href="#">양주</a></li>
+							<li><a href="#">영통</a></li>
+							<li><a href="#">오산</a></li>
+							<li><a href="#">용인테크노밸리</a></li>
+							<li><a href="#">의정부 민락</a></li>
+							<li><a href="#">일산</a></li>
+							<li><a href="#">일산벨라시타</a></li>
+							<li><a href="#">킨텍스</a></li>
+							<li><a href="#">파주금촌</a></li>
+							<li><a href="#">파주운정</a></li>
+							<li><a href="#">파주출판도시</a></li>
+							<li><a href="#">평택</a></li>
+							<li><a href="#">하남스타필드</a></li>
+						</ul>
+					</li>
+					<li>
+						<span>인천</span>
+						<ul class="area">
+							<li><a href="#">검단</a></li>
+							<li><a href="#">송도</a></li>
+							<li><a href="#">영종</a></li>
+							<li><a href="#">인천논현</a></li>
+							<li><a href="#">청라</a></li>
+							<li><a href="#">청라지젤</a></li>
+						</ul>
+					</li>
+					<li>
+						<span>대전 | 세종 | 충청</span>
+						<ul class="area">
+							<li><a href="#">공주</a></li>
+							<li><a href="#">대전</a></li>
+							<li><a href="#">대전중앙로</a></li>
+							<li><a href="#">세종</a></li>
+							<li><a href="#">오창</a></li>
+							<li><a href="#">제천</a></li>
+							<li><a href="#">진천</a></li>
+							<li><a href="#">천안</a></li>
+							<li><a href="#">청주충북대</a></li>
+							<li><a href="#">충주</a></li>
+							<li><a href="#">홍성내포</a></li>
+						</ul>
+					</li>
+					<li>
+						<span>부산 | 경상</span>
+						<ul class="area">
+							<li><a href="#">거창</a></li>
+							<li><a href="#">경산하양</a></li>
+							<li><a href="#">경주</a></li>
+							<li><a href="#">구미강동</a></li>
+							<li><a href="#">김천</a></li>
+							<li><a href="#">남포항</a></li>
+							<li><a href="#">대구(칠성로)</a></li>
+							<li><a href="#">대구 신세계</a></li>
+							<li><a href="#">대구 이시아</a></li>
+							<li><a href="#">덕천</a></li>
+							<li><a href="#">마산</a></li>
+							<li><a href="#">문경</a></li>
+							<li><a href="#">부산극장</a></li>
+							<li><a href="#">부산대</a></li>
+							<li><a href="#">북대구(칠곡)</a></li>
+							<li><a href="#">사천</a></li>
+							<li><a href="#">삼천포</a></li>
+							<li><a href="#">양산</a></li>
+							<li><a href="#">양산라피에스타</a></li>
+							<li><a href="#">울산</a></li>
+							<li><a href="#">정관</a></li>
+							<li><a href="#">창원</a></li>
+							<li><a href="#">해운대(장산)</a></li>
+						</ul>
+					</li>
+					<li>
+						<span>광주 | 전라</span>
+						<ul class="area">
+							<li><a href="#">광주상무</a></li>
+							<li><a href="#">광주하남</a></li>
+							<li><a href="#">남원</a></li>
+							<li><a href="#">목포</a></li>
+							<li><a href="#">목포하당(포르모)</a></li>
+							<li><a href="#">송천</a></li>
+							<li><a href="#">순천</a></li>
+							<li><a href="#">여수</a></li>
+							<li><a href="#">여수웅천</a></li>
+							<li><a href="#">전대(광주)</a></li>
+							<li><a href="#">전주(객사)</a></li>
+							<li><a href="#">첨단(광주)</a></li>
+						</ul>
+					</li>
+					<li>
+						<span>강원</span>
+						<ul class="area">
+							<li><a href="#">남춘천</a></li>
+							<li><a href="#">속초</a></li>
+							<li><a href="#">원주</a></li>
+							<li><a href="#">원주센트럴</a></li>
+						</ul>
+					</li>
+					<li>
+						<span>제주</span>
+						<ul class="area">
+							<li><a href="#">제주</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</article>
+		<!-- //footer_teather -->
+	</main>
+	<!-- footer -->
+	<footer id="footer">
+		<div class="container">
+			<a href="/" title="MEGABOX 메인으로 가기">
+				<img src="img/logo_footer_new.png" alt="MEGABOX">
+			</a>
+			<ul class="policy">
+				<li><a href="#">회사소개</a></li>
+				<li><a href="#">채용정보</a></li>
+				<li><a href="#">제휴/광고/부대사업 문의</a></li>
+				<li><a href="#">이용약관</a></li>
+				<li><a href="#" class="c_mintlite">개인정보 처리방침</a></li>
+				<li><a href="#">고객센처</a></li>
+				<li><a href="#">윤리경영</a></li>
+			</ul>
+			<ul class="adr">
+				<li>서울특별시 강남구 도산대로 156, 2층 메가박스중앙(주) (논현동, 중앙엠앤비사옥)</li>
+				<li>대표자명 김진선 | 개인정보보호 책임자 경영지원실 실장 박영진</li>
+				<li>사업자등록번호 211-86-59478 | 통신판매업신고번호 제 833호</li>
+				<li class="copyright">Copyright 2014 by MegaboxJoongAng, Inc. All rights reserved</li>
+			</ul>
+			<div class="ft_etc">
+				<ul>
+					<li><a href="#" class="twitter">
+						<span class="ir_su">MEGABOX Twitter</span>
+					</a></li>
+					<li><a href="#" class="facebook">
+						<span class="ir_su">MEGABOX Facebook</span>
+					</a></li>
+					<li><a href="#" class="instagram">
+						<span class="ir_su">MEGABOX Instagram</span>
+					</a></li>
+					<li><a href="#" class="android">
+						<span class="ir_su">MEGABOX Android APP</span>
+					</a></li>
+					<li><a href="#" class="apple">
+						<span class="ir_su">MEGABOX iPhone APP</span>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<!-- //footer -->
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="js/script.js"></script>
+</body>
+</html>
