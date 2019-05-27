@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
     <head>
-        <title></title>
+        <meta charset="utf-8">
+
+        <title>영화 상세보기</title>
+        <!-- favicon -->
+        <link rel="icon" type="image/x-icon" href="https://megabox.co.kr/favicon.ico" />
+
+        <!-- style -->
+        <link rel="stylesheet" href="css/slick-theme.css">
+        <link rel="stylesheet" href="css/slick.css">
         <link rel="stylesheet" href="css/reset.css">
         <style>
-            .movie_age15{   
-                background-position: -90px -200px; 
-                width: 25px; height: 26px;
-            }
-            .movie_age12{   
-                background-position: -71px 0px;
-            }
-            .movie_age_all{   
-                background-position: 0px -200px;
-                width: 20px; height: 21px;
-            }
+        body{background: #888;}
             .contents{
                 width:1000px;
-                height: 800px;
                 padding: 50px 25px;
                 margin: 0 auto;
-                border: 1px solid red;
+                background: #fff;
             }
             .row1{
                 display:flex;
@@ -36,12 +33,20 @@
             .row1 .right_wrap{
                 display: inline-block;
                 width: 620px; height: 336px;
-                border: 1px solid red;
             }
-            .row1 .right_wrap span{
+            .row1 .right_wrap .title span{
                 background-image: url(img/bg_age_l.png);
                 display: inline-block;
                 width: 30px; height: 32px;
+            }
+            .row1 .right_wrap .movie_age12{
+                background-position: -71px 0;
+            }
+            .row1 .right_wrap .movie_age15{
+                background-position: -110px 0;
+            }
+            .row1 .right_wrap .movie_age_all{
+                background-position: 0 0;
             }
             .row1 .right_wrap .title{
                 line-height: 32px;
@@ -55,107 +60,520 @@
             .row1 .right_wrap .title p{
                 color: #666;
             }
+            .reservation_wrap{
+                position: relative;
+            }
+            .small_star{
+                display: block;
+                background: url(img/star_1.png) 0 0 no-repeat;
+                width: 110px;
+                height: 14px;
+                margin-top: 10px;
+            }
+            .fill{
+                height: 14px;
+                width: 80%;
+                display: block;
+                background: url(img/star_1.png) 0 -16px no-repeat;
+            }
+            .small_star .starScore{
+                position: absolute;
+                top: -5px; left: 114px;
+                font-size: 16px;
+            }
+            .info{
+                padding: 5px 0 15px 0;
+                border-bottom: 1px solid #e5e5e5;
+            }
+            .info li{
+                padding: 2px;
+            }
+            .starRev{
+                display: inline-block;
+                line-height: 24px;
+            }
+            .starR{
+                display: inline-block;
+                width:30px; height:30px;
+                background:url(img/star.png) no-repeat;
+                background-size: 100% 100%;
+                text-indent: -9999px;
+                cursor: pointer;
+            }
+            .starR.on{
+                background:url(img/hover_star.png) no-repeat;
+                width:30px; height:30px;
+                background-size: 100% 100%;
+                
+            }
+            .myRate{
+                display: inline-block;
+                height: 40px;
+                line-height: 40px;
+            }
+            .comment{
+                display: inline-block; 
+            }
+            .comment li{
+                display: none;
+            }
+            .comment li:first-child{
+                display: block;
+            }
+            .resev{
+                position: absolute;
+                top: 0; right: 0;
+                background: url(img/btn_movie.png);
+                background-position: -300px -150px;
+                width: 120px;
+                height: 42px;
+            }
+            .row2 h3{
+                font-size: 18px;
+                font-weight: bold;
+                margin: 20px 0;
+            }
+            .summary{
+                white-space: pre-line;
+            }
+            /* slide */
+            .bg_slide{
+                width: 100%;
+                height: 486px;
+                background: #000;
+                margin:0 auto;
+            }
+            .slider-for{
+                height: 486px;
+                margin: 30px auto 1px;
+                overflow: hidden;
+            }
+            .slider-for .slick-slide img{
+                width: auto !important;
+                height: 486px;
+                margin:auto;
+            }
+            .slider-nav{
+                width: 800px;
+                height: 85px;
+                margin: auto;
+            }
+            .slider-nav .slick-slide{
+                height: 110px;
+            }
+            .slick-slide img{
+                width: auto !important;
+            }
+            .slider-nav .slick-slide img{
+                height: 110px;
+            }
+            .slider-nav .slick-track{
+                height: 85px;
+            }
+            .slick-arrow{
+                position: absolute;
+                top: 50%;
+                z-index: 50;
+                margin-top: -12px;
+            }
+            .slick-prev{
+                top: 70%;
+                left: -60px;
+            }
+            .slick-next{
+                top: 70%;
+                right: -60px;
+            }
+            .slider-nav .slick-current{
+                overflow: hidden;
+                box-sizing: border-box;
+                border: 5px solid #59BEC9;
+                opacity: 0.7;
+            }
+            .row3{
+                margin:50px 0;
+            }
+            .item{
+                cursor: pointer;
+            }
         </style>
     </head>
     <body>
         <section id="movie_detail">
-            <div class="contents">
-                <div class="row1">
-                    <div class="left_wrap">
-                        <img id="movie_img" src="" alt="">
-                    </div>
-                    <div class="right_wrap">
-                        <div class="title">
-                            <span class="ir_su movie_age12">12세관람가</span>
-                            <h2></h2>
-                            <p>Avengers: Endgame , 2019</p>
-                        </div>
-                        <div class="text">
-                            <div class="reservation_wrap">
-                                <span class="small_star">
-                                    <span class="fill"></span>
-                                </span>
-                                <ul>
-                                    <li>
-                                        <strong>타입:</strong>
-                                        디지털(자막
-                                        ), ATMOS(자막), 3D(자막), 3D ATMOS(자막)
-                                    </li>
-                                    <li>
-                                        <strong>개봉일:</strong>
-                                        2019.04.24
-                                    </li>
-                                    <li>
-                                        <strong>감독:</strong>
-                                        안소니 루소, 조 루소
-                                    </li>
-                                    <li>
-                                        <strong>출연진:</strong>
-                                        로버트 다우니 주니어, 크리스 에반스, 마크 러팔로, 크리스 헴스워스, 스칼렛 요한슨, 제레미 레너, 돈 치들, 폴 러드, 브리 라슨, 카렌 길런, 브래들리 쿠퍼, 조슈 브롤린
-                                    </li>
-                                    <li>
-                                        <strong>장르:</strong>
-                                        SF, 액션 / 181 분
-                                    </li>
-                                    <li>
-                                        <strong>누적관객:</strong>
-                                        13,064,935명
-                                    </li>
-                                    <li>
-                                        <strong>전일관객:</strong>
-                                        50,848명
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="rating"></div>
-                    </div>
-                </div>
-                <div class="row2">
-                    <h3>줄거리</h3>
-                    <div class="text">
-                        인피니티 워 이후 절반만 살아남은 지구 <br> 
-                        마지막 희망이 된 어벤져스 <br>
-                        먼저 떠난 그들을 위해 모든 것을 걸었다! <br>
-                        <br>
-                        위대한 어벤져스<br>
-                        운명을 바꿀 최후의 전쟁이 펼쳐진다!
-                    </div>
-                </div>
-            </div>
         </section>
-        
-
         <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="js/slick.min.js" charset="utf-8"></script>
         <script>
             $(document).ready(function(){
                 var movies = [
-                    { "id":1, "type":1, "name":"어벤져스: 엔드게임", "age":12, "img":"m_1", "date":"2019-4-23"},
-                    { "id":2, "type":1, "name":"나의 특별한 형제", "age":12, "img":"m_2"},
-                    { "id":3, "type":1, "name":"명탐정 피카츄", "age":"_all", "img":"m_3"},
-                    { "id":4, "type":1, "name":"(더빙) 뽀로로 극장판 보물섬 대모험", "age":"_all", "img":"m_4"},
-                    { "id":5, "type":2, "name":"어벤져스: 엔드게임", "age":12, "img":"m_1"},
-                    { "id":6, "type":2, "name":"[응원상영] 킹 오브 프리즘 -샤이니 세븐 스타즈- Ⅲ 레오x유우x알렉", "age":12, "img":"m_5"},
-                    { "id":7, "type":2, "name":"미스 스티븐스", "age":15, "img":"m_6"},
-                    { "id":8, "type":2, "name":"굿바이 마이 러브NK: 붉은 청춘", "age":15, "img":"m_7"},
-                    { "id":9, "type":3, "name":"[GET9] 플로리다 프로젝트", "age":12, "img":"m_8"},
-                    { "id":10, "type":3, "name":"명탐정 피카츄", "age":"_all", "img":"m_3"},
-                    { "id":11, "type":3, "name":"걸캅스", "age":15, "img":"m_9"},
-                    { "id":12, "type":3, "name":"라플라스의 마녀", "age":15, "img":"m_10"},
-                    { "id":13, "type":4, "name":"[라이브뷰잉] 아이돌 마스터 Side M 4th 스테이지 ~TR", "age":12, "img":"m_11"},
-                    { "id":14, "type":4, "name":"[오페라] 마술피리", "age":15, "img":"m_12"},
-                    { "id":15, "type":4, "name":"안도 타다오", "age":"_all", "img":"m_13"},
-                    { "id":16, "type":4, "name":"미스 스티븐스", "age":12, "img":"m_6"}
+                    { "id":1, "number":1,"name":"어벤져스: 엔드게임", "sub_name":"Avengers: Endgame , 2019" ,"age":12, "img":"m_1", "star_score":"9.5","type":"디지털(자막), ATMOS(자막), 3D(자막), 3D ATMOS(자막)","date":"2019-4-23","director":"안소니 루소, 조 루소","cast":"로버트 다우니 주니어, 크리스 에반스, 마크 러팔로, 크리스 헴스워스, 스칼렛 요한슨, 제레미 레너, 돈 치들, 폴 러드, 브리 라슨, 카렌 길런, 브래들리 쿠퍼, 조슈 브롤린","genre":"SF, 액션 / 181","audience1":"13,064,935","audience2":"50,848","summary":`인피니티 워 이후 절반만 살아남은 지구 
+                                            마지막 희망이 된 어벤져스 
+                                            먼저 떠난 그들을 위해 모든 것을 걸었다! 
+
+                                            위대한 어벤져스
+                                            운명을 바꿀 최후의 전쟁이 펼쳐진다!`},
+                    { "id":2, "number":2,"name":"나의 특별한 형제", "sub_name":"Inseparable bros, 2018" ,"age":12, "star_score":"6.5","img":"m_2","type":"디지털","date":"2019-4-30","director":"정다원","cast":"신하균, 이광수, 이솜","genre":"코미디, 드라마 / 113","audience1":"1,430,814","audience2":"24,011","summary":
+                        "머리 좀 쓰는 형 x 몸 좀 쓰는 동생!"+
+                        "세상엔 이런 형제도 있다!"+
+                        
+                        "비상한 두뇌를 가졌지만 동생 ‘동구’ 없이는 아무 데도 못 가는 형 ‘세하’(신하균),"+
+                        "뛰어난 수영실력을 갖췄지만 형 ‘세하’ 없이는 아무것도 못 하는 동생 ‘동구’(이광수)."+
+                        "이들은 피 한 방울 섞이지 않았지만 20년 동안 한 몸처럼 살아온 ‘특별한 형제’다."+
+
+                        "어느 날 형제의 보금자리 ‘책임의 집’을 운영하던 신부님이 돌아가시자"+
+                        "모든 지원금이 끊기게 되고, 각각 다른 장애를 가진 두 사람은 헤어질 위기에 처하고 만다."+
+
+                        "세하는 ‘책임의 집’을 지키고 동구와 떨어지지 않기 위해"+
+                        "구청 수영장 알바생이자 취준생 ‘미현’(이솜)을 수영코치로 영입하고,"+
+                        "동구를 수영대회에 출전시켜 사람들의 이목을 집중시키는 데 성공한다."+
+
+                        "헤어지지 않을 수 있다는 희망을 본 것도 잠시,"+
+                        "예상치 못한 인물이 형제 앞에 등장하면서 형제는 새로운 위기를 겪게 되는데...!"},
+                    { "id":3, "number":3,"name":"명탐정 피카츄", "sub_name":"Pokemon Detective Pikachu, 2019" ,"age":"_all", "star_score":"5","img":"m_3","type":"디지털(자막)","date":"2019-5-01","director":"롭 레터맨","cast":"라이언 레이놀즈, 저스티스 스미스","genre":"SF, 액션, 판타지 / 104 ","audience1":"635,139","audience2":"57,356","summary":
+                        "“탐정이 아냐, 명탐정이지!”"+
+                        "세상을 구할 번쩍이는 추리가 시작된다!"+
+                        "기억을 잃은 채 깨어난 피카츄, 난 누구? 여긴 어디?"+
+                        "유일한 단서는 탐정모자에 적힌 해리란 이름과 주소."+
+                        "주소 속 아파트에서 자신의 말을 유일하게 알아 듣는,"+
+                        "실종된 해리의 아들 팀 굿맨을 만나게 된다."+
+                        "명탐정의 촉으로 이건 그야말로 대.박.사.건!"+
+                        "사라진 아빠를 찾기 위해 피카츄와 떠나는 기상천외한 모험이 시작된다."+
+                        "피카피카!"},
+                    { "id":4, "number":4,"name":"(더빙) 뽀로로 극장판 보물섬 대모험", "sub_name":"Treasure Island Adventure, 2019" ,"age":"_all", "star_score":"2","img":"m_4","type":"디지털(더빙)","date":"2019-5-03","director":"김현호, 윤창섭","cast":"이선(뽀로로 목소리), 이미자(크롱 목소리), 김현지(에디 목소리), 홍소영(루피 목소리), 정미숙(패티 목소리), 김서영(해리 목소리), 김환진(포비 목소리), 남도형(실버 목소리), 정승욱(블랙 목소리), 이장원(오리상인 목소리), 황창영(크라켄 목소리)","genre":"애니메이션 / 79","audience1":"752,508","audience2":"12,835","summary":
+                        "떠나자, 보물섬으로~!"+
+                        "뽀로로와 친구들의 스펙터클 보물찾기 어드벤처!"+
+
+                        "전설 속 보물을 찾아 떠난 뽀로로와 친구들은"+
+                        "우연히 손에 넣은 지도를 따라 신비의 보물섬에 도착한다."+
+
+                        "그곳에서 사라진 실버 선장을 만나"+
+                        "비밀을 간직한 보물섬의 수수께끼를 풀어내지만,"+
+                        "악당 블랙 선장과 보물섬의 괴물로 인해 위기에 빠지는데..."+
+
+                        "과연 뽀로로와 친구들은 전설의 보물을 찾을 수 있을까?"},
+                    { "id":5,"number":1, "name":"어벤져스: 엔드게임", "sub_name":"Avengers: Endgame , 2019" ,"age":12, "star_score":"7","img":"m_1","type":"디지털(자막), ATMOS(자막), 3D(자막), 3D ATMOS(자막)","date":"2019-4-23","director":"안소니 루소, 조 루소","cast":"로버트 다우니 주니어, 크리스 에반스, 마크 러팔로, 크리스 헴스워스, 스칼렛 요한슨, 제레미 레너, 돈 치들, 폴 러드, 브리 라슨, 카렌 길런, 브래들리 쿠퍼, 조슈 브롤린","genre":"SF, 액션 / 181","audience1":"13,064,935","audience2":"50,848","summary":
+                                    "인피니티 워 이후 절반만 살아남은 지구"+ 
+                                    "마지막 희망이 된 어벤져스"+ 
+                                    "먼저 떠난 그들을 위해 모든 것을 걸었다!"+ 
+
+                                    "위대한 어벤져스"+
+                                    "운명을 바꿀 최후의 전쟁이 펼쳐진다!"},
+                    { "id":6, "number":5,"name":"[응원상영] 킹 오브 프리즘 -샤이니 세븐 스타즈- Ⅲ 레오x유우x알렉", "sub_name":"Avengers: Endgame , 2019" ,"age":12, "star_score":"8","img":"m_5","type":"디지털","date":"2019-5-05","director":"히시다 마사카즈","cast":"","genre":"애니메이션 / 70","audience1":"8,027","audience2":"277","summary":
+                                "킹 오브 프리즘 -샤이니 세븐 스타즈-"+
+                                "KING OF PRISM -Shiny Seven Stars-"+
+                                "Ⅲ 레오×유우×알렉"+
+
+
+                                "모두가 뜨거웠던 그때의 두근거림을 당신은 기억하고 있나요?"+
+
+                                "피겨스케이트, 노래, 댄스, 그리고 마음의 비약을 구현한 프리즘 쇼 세계에서"+
+                                "스타를 꿈꾸는 7명의 소년들의 이야기가 시작된다."+
+                                "있는 그대로의 자신을 잃지 않기 위해 노력하는 레오와"+
+                                "오버 더 레인보우와 같은 진정한 동료를 소망하는 유우"+
+                                "그리고 스트리트 계의 카리스마를 노리는 알렉산더"+
+
+                                "그들은 어떠한 사연으로"+
+                                "프리즘스타가 되려고 하는 것일까?"+
+
+                                "자신의 꿈을 좇는 소년들의"+
+                                "세 번째 이야기!"},
+                    { "id":7, "number":6,"name":"미스 스티븐스", "sub_name":"Miss Stevens, 2016" ,"age":15, "star_score":"10","img":"m_6","type":"디지털","date":"2019-5-02","director":"줄리아 하트","cast":"릴리 레이브, 티모시 샬라메, 릴리 라인하트, 앤서니 퀸틀","genre":"드라마 / 86","audience1":"18,439","audience2":"305","summary":
+                                "연기에 특별한 재능이 있는 학교 요주의 인물 ‘빌리’"+
+                                "완벽주의자 여왕 ‘마고’"+
+                                "귀엽고 친근한 ‘샘’"+
+                                "그리고 매력적인 영어 선생님 ‘미스 스티븐스’"+
+
+                                "학교에서 매일 보지만 서로에 대해 잘 모르는 이들이"+
+                                "주말 3일동안 열리는 연극대회에 참가하게 된다."+
+                                "그리고 빌리는 자신과 취향이 비슷하고 무언가 상처를 숨기고 있는 것 같은"+
+                                "스티븐스 선생님에게 묘한 동질감을 느끼며 이끌리게 되는데…"+
+
+                                "당신의 마음은 괜찮나요?"+
+                                "모두의 마음을 따뜻하게 위로할 보석 같은 영화가 찾아온다!"},
+                    { "id":8, "number":7,"name":"굿바이 마이 러브NK: 붉은 청춘", "sub_name":"Goodbye My Love, North Korea, 2017" ,"age":15, "star_score":"3.3","img":"m_7","type":"디지털","date":"2019-5-10","director":"김소영","cast":"김종훈, 최국인, 지나이다 이바노브나, 한 안드레이, 문 빅토르, 좌봐예프 무싸베코프, 한 지마","genre":"다큐멘터리 / 86","audience1":"18,439","audience2":"305","summary":""},
+                    { "id":9, "number":8,"name":"[GET9] 플로리다 프로젝트", "sub_name":"The Florida Project, 2017" ,"age":12, "star_score":"4.9","type":"디지털(자막)","img":"m_8","date":"2019-5-11","director":"","cast":"","genre":"드라마 / 86","audience1":"18,439","audience2":"305","summary":""},
+                    { "id":10, "number":3,"name":"명탐정 피카츄", "sub_name":"Pokemon Detective Pikachu, 2019" ,"age":"_all", "star_score":"5","img":"m_3","type":"디지털(자막)","date":"2019-5-01","director":"롭 레터맨","cast":"라이언 레이놀즈, 저스티스 스미스","genre":"SF, 액션, 판타지 / 104 ","audience1":"635,139","audience2":"57,356","summary":
+                        "“탐정이 아냐, 명탐정이지!”"+
+                        "세상을 구할 번쩍이는 추리가 시작된다!"+
+                        "기억을 잃은 채 깨어난 피카츄, 난 누구? 여긴 어디?"+
+                        "유일한 단서는 탐정모자에 적힌 해리란 이름과 주소."+
+                        "주소 속 아파트에서 자신의 말을 유일하게 알아 듣는,"+
+                        "실종된 해리의 아들 팀 굿맨을 만나게 된다."+
+                        "명탐정의 촉으로 이건 그야말로 대.박.사.건!"+
+                        "사라진 아빠를 찾기 위해 피카츄와 떠나는 기상천외한 모험이 시작된다."+
+                        "피카피카!"},
+                    { "id":11, "number":9,"name":"걸캅스", "sub_name":"Miss & Mrs. Cops, 2019" ,"age":15, "star_score":"9.9","img":"m_9","type":"디지털","date":"2019-5-15","director":"정다원","cast":"라미란, 이성경, 윤상현, 최수영","genre":"코미디, 액션 / 107","audience1":"1,227,853","audience2":"143,458","summary":
+                        "민원실 퇴출 0순위 전직 전설의 형사 '미영'과 민원실로 밀려난 현직 꼴통 형사 '지혜'"+
+                        "집에서는 눈만 마주쳐도 으르렁 대는 시누이 올케 사이인 두 사람은"+
+                        "민원실에 신고접수를 하기 위해 왔다가 차도에 뛰어든 한 여성을 목격하고"+
+                        "그녀가 48시간 후 업로드가 예고된 디지털 성범죄 사건의 피해자란 사실을 알게 된다."+
+                        "강력반, 사이버 범죄 수사대, 여성청소년계까지 경찰 내 모든 부서들에서"+
+                        "복잡한 절차와 인력 부족을 이유로 사건이 밀려나자"+
+                        "‘미영’과 ‘지혜’는 비공식 수사에 나서기로 결심한다."+
+
+                        "수사가 진전될수록 형사의 본능이 꿈틀대는 ‘미영’과 정의감에 활활 불타는 ‘지혜’는"+
+                        "드디어 용의자들과 마주할 기회를 잡게 되는데…"+
+
+                        "걸크러시 콤비의 비공식 합동 수사가 펼쳐진다!"},
+                    { "id":12, "number":10,"name":"라플라스의 마녀", "sub_name":"Laplace's Witch, 2018" ,"age":15, "star_score":"8.3","img":"m_10","type":"디지털","date":"2019-5-16","director":"미이케 다카시","cast":"사쿠라이 쇼, 히로세 스즈, 후쿠시 소타, 타마키 히로시, 릴리 프랭키","genre":"스릴러, 미스터리 / 116","audience1":"9,464","audience2":"65","summary":
+                    "유명 온천 휴양지, 영화 제작자의 시신이 발견된다."+
+                    "사인은 황화수소 중독."+
+                    "사망 사건이 발생한 지형적 특성상, 단순 사고를 확신하는 ‘아오에(사쿠라이 쇼)’ 교수 앞에"+
+                    "보험금을 노린 살인 사건으로 의심하는 ‘나카오카(타마키 히로시)’ 형사,"+
+                    "연쇄 살인의 가능성을 예고하는 미스터리한 소녀 ‘우하라 마도카(히로세 스즈)’가 나타난다. "+
+
+                    "그리고 얼마 뒤, 또 다른 온천 휴양지에서 무명 영화배우가 황화수소 중독으로 사망하는 사건이 발생한다."+
+                    "‘아오에’ 교수는, ‘나카오카 ‘형사의 가설하에 0.001%의 살인 가능성을 파헤치게 되는데…"+
+
+                    "인간의 한계를 넘어선 불가사의한 사망 사건 발생!"+
+                    "우연한 사고인가, 연쇄 살인 사건인가! 살인을 증명하라!"},
+                    { "id":13, "number":11,"name":"[라이브뷰잉] 아이돌 마스터 Side M 4th 스테이지 ~TR" ,"age":12,"star_score":"6.5", "img":"m_11","type":"디지털","date":"2019-5-18","director":"줄리아 하트","genre":"SF, 액션, 판타지 / 104 ","audience1":"635,139","audience2":"57,356","summary":""},
+                    { "id":14, "number":12,"name":"[오페라] 마술피리" ,"age":15, "star_score":"8","img":"m_12","type":"오페라","date":"2019-5-20","director":"","cast":"","genre":"/ 149 ","audience1":"1,230","audience2":"149","summary":
+                    "[상영 정보]"+
+                    "상영 지점 : 코엑스, 센트럴, 목동, 킨텍스, 분당, 대구 신세계"+
+                    "러닝 타임 : 149분*인터미션 없음"+
+                    "상영 일정 : 2019년 4월 28일 ~ 6월 12일 / 수 14:00 (코엑스, 킨텍스, 분당 19:00), 일 14:00 상영"+
+
+                    "[시놉시스]"+
+                    "왕자 타미노는 폭군 자라스트로가 밤의 여왕의 딸, 파미나를 납치해갔다는 사실을 전해 듣는다. 파미나를 구하기로 결심한 왕자는 여왕으로부터 마술피리를, 동행자인 새잡이 파파게노는 요술종을 받아 악당의 소굴로 향한다. 하지만 그 곳에서 밤의 여왕의 말과는 달리 자라스트로가 의로운 철학자라는 사실이 밝혀지고 타미노는 그 일원이 되기 위해 여러 시련을 거치기로 약속한다. 파파게노와 함께 감옥을 탈출한 파미나는 마침내 타미노를 만나지만 침묵 수행 중인 그가 말을 하지 않자 버림받았다고 오해를 하게 되는데..."},
+                    { "id":15, "number":13,"name":"안도 타다오", "sub_name":"Tadao Ando - Samurai Architect, 2016" ,"age":"_all", "star_score":"6.5","img":"m_13","type":"디지털","date":"2019-5-21","director":"안도 다다오","cast":"","genre":"다큐멘터리 / 73","audience1":"29,539","audience2":"762",
+                    "summary":"“빛의 교회, 지중미술관, 푼타 델라 도가나 미술관 등 세계를 사로잡은 건축가!”"+
+
+                    "전문적인 건축교육을 받지 못했지만, 타고난 예술성과 도전정신으로 실력을 인정받은 안도 타다오."+
+                    "고교시절엔 복서로, 청년시절엔 건축 현장에서 치열한 나날을 보냈던 그는"+
+                    "우연히 서점에서 설계도면을 본 후, 건축가의 꿈을 안고 유럽으로 향한다."+
+                    "현장에서 익힌 건축지식을 기반으로 콘크리트를 연구한 끝에"+
+                    "누구도 만들 수 없는 건축물을 만들며 노출 콘크리트의 거장이 된 그의 이야기가 시작된다!"},
+                    { "id":16, "number":6,"name":"미스 스티븐스", "sub_name":"Miss Stevens, 2016" ,"age":12, "star_score":"10","img":"m_6","type":"디지털","date":"2019-5-02","director":"줄리아 하트","cast":"릴리 레이브, 티모시 샬라메, 릴리 라인하트, 앤서니 퀸틀","genre":"드라마 / 86","audience1":"18,439","audience2":"305","summary": 
+                                "연기에 특별한 재능이 있는 학교 요주의 인물 ‘빌리’"+
+                                "완벽주의자 여왕 ‘마고’"+
+                                "귀엽고 친근한 ‘샘’"+
+                                "그리고 매력적인 영어 선생님 ‘미스 스티븐스’"+
+
+                                "학교에서 매일 보지만 서로에 대해 잘 모르는 이들이 "+
+                                "주말 3일동안 열리는 연극대회에 참가하게 된다."+
+                                "그리고 빌리는 자신과 취향이 비슷하고 무언가 상처를 숨기고 있는 것 같은 "+
+                                "스티븐스 선생님에게 묘한 동질감을 느끼며 이끌리게 되는데…"+
+
+                                "당신의 마음은 괜찮나요?"+
+                                "모두의 마음을 따뜻하게 위로할 보석 같은 영화가 찾아온다!"}
                 ];
 
+                var pics =[
+                    {"id":1,"number":1 ,"src":"m_1"},
+                    {"id":2, "number":1 ,"src":"a1"},
+                    {"id":3, "number":1 ,"src":"a2"},
+                    {"id":4, "number":1 ,"src":"a3"},
+                    {"id":5, "number":1 ,"src":"a4"},
+                    {"id":6, "number":1 ,"src":"a5"},
+                    {"id":7, "number":1 ,"src":"a6"},
+                    {"id":8, "number":1 ,"src":"a7"},
+                    {"id":9, "number":1 ,"src":"a8"},
+                    {"id":10, "number":1 ,"src":"a9"},
+                    {"id":11, "number":1 ,"src":"a10"},
+                    {"id":12,"number":1 , "src":"a11"},
+                    {"id":13, "number":1 ,"src":"a12"},
+                    {"id":14, "number":1 ,"src":"a13"},
+                    {"id":15, "number":1 ,"src":"a14"},
+                    {"id":16, "number":1 ,"src":"a15"},
+                    {"id":17, "number":1, "src":"a16"},
+                    {"id":18, "number":2, "src":"m_2"},
+                    {"id":19, "number":2,"src":"b1"},
+                    {"id":20, "number":2,"src":"b2"},
+                    {"id":21, "number":2,"src":"b3"},
+                    {"id":22, "number":2,"src":"b4"},
+                    {"id":23, "number":2,"src":"b5"},
+                    {"id":24, "number":2,"src":"b6"},
+                    {"id":25,"number":2, "src":"b7"},
+                    {"id":26, "number":2,"src":"b8"},
+                    {"id":27, "number":2,"src":"b9"},
+                    {"id":28,"number":2, "src":"b10"},
+                    {"id":29, "number":2,"src":"b11"},
+                    {"id":30, "number":3,"src":"m_3"},
+                    {"id":31, "number":3,"src":"c1"},
+                    {"id":32, "number":3,"src":"c2"},
+                    {"id":33, "number":4,"src":"m_4"},
+                    {"id":34, "number":4,"src":"d1"},
+                    {"id":35, "number":4,"src":"d2"},
+                    {"id":36, "number":4,"src":"d3"},
+                    {"id":37, "number":4,"src":"d4"},
+                    {"id":38, "number":4,"src":"d5"},
+                    {"id":39, "number":4,"src":"d6"},
+                    {"id":40, "number":4,"src":"d7"},
+                    {"id":41, "number":4,"src":"d8"},
+                    {"id":42, "number":5,"src":"m_5"},
+                    {"id":43, "number":5,"src":"e1"},
+                    {"id":44, "number":5,"src":"e2"},
+                    {"id":45, "number":6,"src":"m_6"},
+                    {"id":45, "number":6,"src":"f1"},
+                    {"id":45, "number":6,"src":"f2"},
+                    {"id":45, "number":6,"src":"f3"},
+                    {"id":45, "number":6,"src":"f4"},
+                    {"id":45, "number":6,"src":"f5"},
+                    {"id":45, "number":6,"src":"f6"},
+                    {"id":45, "number":6,"src":"f7"},
+                    {"id":45, "number":6,"src":"f8"},
+                    {"id":45, "number":6,"src":"f9"},
+                    {"id":45, "number":6,"src":"f10"},
+                    {"id":45, "number":6,"src":"f11"},
+                    {"id":45, "number":6,"src":"f12"},
+                    {"id":45, "number":7,"src":"m_7"},
+                    {"id":45, "number":8,"src":"m_8"},
+                    {"id":45, "number":9,"src":"m_9"},
+                    {"id":45, "number":9,"src":"g1"},
+                    {"id":45, "number":9,"src":"g2"},
+                    {"id":45, "number":9,"src":"g3"},
+                    {"id":45, "number":9,"src":"g4"},
+                    {"id":45, "number":9,"src":"g5"},
+                    {"id":45, "number":9,"src":"g6"},
+                    {"id":45, "number":9,"src":"g7"},
+                    {"id":45, "number":9,"src":"g8"},
+                    {"id":45, "number":9,"src":"g9"},
+                    {"id":45, "number":9,"src":"g10"},
+                    {"id":45, "number":9,"src":"g11"},
+                    {"id":45, "number":9,"src":"g12"},
+                    {"id":45, "number":9,"src":"g13"},
+                    {"id":45, "number":9,"src":"g14"},
+                    {"id":45, "number":10,"src":"m_10"},
+                    {"id":45, "number":11,"src":"m_11"},
+                    {"id":45, "number":12,"src":"m_12"},
+                    {"id":45, "number":12,"src":"h1"},
+                    {"id":45, "number":12,"src":"h2"},
+                    {"id":45, "number":12,"src":"h3"},
+                    {"id":45, "number":12,"src":"h4"},
+                    {"id":45, "number":12,"src":"h5"},
+                    {"id":45, "number":12,"src":"h6"},
+                    {"id":45, "number":13,"src":"m_13"},
+                    {"id":45, "number":13,"src":"i1"},
+                    {"id":45, "number":13,"src":"i2"},
+                    {"id":45, "number":13,"src":"i3"},
+                    {"id":45, "number":13,"src":"i4"},
+                    {"id":45, "number":13,"src":"i5"},
+                    {"id":45, "number":13,"src":"i6"},
+                    {"id":45, "number":13,"src":"i7"},
+                    {"id":45, "number":13,"src":"i8"},
+                    {"id":45, "number":13,"src":"i9"},
+                    {"id":45, "number":13,"src":"i10"},
+                    {"id":45, "number":13,"src":"i11"}
+                ];
+
+                
+                var txt = '';
+                var txt2 = '';
+                var txt3 = '';
+                var html= '';
+                var html2= '';
                 var movie_id = getUrlParameter('movie_id');
                 var movie = searchItem(movie_id);
+                for(var i in pics){
+                    if(pics[i].number == movie.number){
+                        txt2 =
+                        `<div class="item">
+                            <img src="img/detail_img/`+pics[i].src+`.jpg" alt="image"  draggable="false"/>
+                        </div>`
+                        txt3 = 
+                        `<div class="item">
+                          <img src="img/detail_img/`+pics[i].src+`.jpg" alt="image"  draggable="false"/>
+                        </div>`
+                    }
+                    if( movie.number < pics[i].number ){
+                        break;
+                    }
+                    html = html+txt2;
+                    html2 = html2+txt3;
+                    
+                }
 
-                $("#movie_img").attr({
-                    "src":"img/"+movie.img+".jpg",
-                    "art":movie.name
-                    });
-                $(".title h2").html(movie.name);
+                txt = 
+                    `<div class="contents">
+                        <div class="row1">
+                            <div class="left_wrap">
+                                <img id="movie_img" src="img/`+movie.img+`.jpg" alt="`+movie.name+`">
+                            </div>
+                            <div class="right_wrap">
+                                <div class="title">
+                                    <span class="ir_su movie_age`+movie.age+`">`+movie.age+`세관람가</span>
+                                    <h2>`+movie.name+`</h2>
+                                    <p>`+movie.sub_name+`</p>
+                                </div>
+                                <div class="text">
+                                    <div class="reservation_wrap">
+                                        <span class="small_star">
+                                            <span class="fill"></span>
+                                            <em class="starScore">`+movie.star_score+`</em>
+                                        </span>
+                                        <button type="button" class="resev ir_su">예매하기</button>
+                                        <ul class="info">
+                                            <li>
+                                                <strong>타입:</strong>
+                                                <em>`+movie.type+`</em>
+                                            </li>
+                                            <li>
+                                                <strong>개봉일:</strong>
+                                                <em>`+movie.date+`</em>
+                                            </li>
+                                            <li>
+                                                <strong>감독:</strong>
+                                                <em>`+movie.director+`</em>
+                                            </li>
+                                            <li>
+                                                <strong>출연진:</strong>
+                                                <em>`+movie.cast+`</em>
+                                            </li>
+                                            <li>
+                                                <strong>장르:</strong>
+                                                <em>`+movie.genre+`분</em>
+                                            </li>
+                                            <li>
+                                                <strong>누적관객:</strong>
+                                                <em>`+movie.audience1+`명</em>
+                                            </li>
+                                            <li>
+                                                <strong>전일관객:</strong>
+                                                <em>`+movie.audience2+`명</em>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="rating">
+                                    <span class="myRate">내 평점</span>
+                                    <div class="starRev">
+                                        <span class="starR">별점 1</span><!--
+                                     --><span class="starR">별점 2</span><!--
+                                     --><span class="starR">별점 3</span><!--
+                                     --><span class="starR">별점 4</span><!--
+                                     --><span class="starR">별점 5</span>
+                                    </div>
+                                    <ul class="comment">
+                                        <li>평점을 입력해주세요</li>
+                                        <li>괜히 봤어요</li>
+                                        <li>기대하진 말아요</li>
+                                        <li>무난했어요</li>
+                                        <li>기대해도 좋아요!</li>
+                                        <li>너무 멋진 영화였어요!</li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="row2">
+                            <h3>줄거리</h3>
+                            <div class="summary">`+movie.summary+`</div>
+                        </div>
+                        <div class="row3">
+                            <div class="slider-nav"></div>
+                            <div class="bg_slide">
+                              <div class="slider-for"></div>
+                            </div>                            
+                        </div>
+                    </div>`;
+                    $('#movie_detail').html(txt);
+                    $('.slider-nav').html(html);
+                    $('.slider-for').html(html2);
+
+
+                $('.fill').css({width: Math.floor(movie.star_score) * 10+'%'});
+
 
                 function searchItem(data){
                     for(var i in movies){
@@ -180,6 +598,44 @@
                         }
                     }
                 }
+
+                // 별점 hover
+                $(document).on({
+                    mouseenter: function () {
+                            var index = $(this).index() + 1;
+                            var $this = $(this).parent().parent().children('ul');
+                            $(this).parent().children('span').removeClass('on');
+                            $(this).addClass('on').prevAll('span').addClass('on');
+
+                            $this.find('li').css({display:'none'});
+                            $this.find('li').eq(index).css({display:"block"});
+                    },
+                    mouseleave: function () {
+                            $(this).parent().children('span').removeClass('on');
+                            var $this = $(this).parent().parent().children('ul');
+                            $this.find('li').css({display:'none'});
+                            $this.find('li').eq(0).css({display:"block"});
+                    }
+                }, ".starRev span");
+
+                
+                $('.slider-for').slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    fade: true,
+                    asNavFor: '.slider-nav'
+                });
+                $('.slider-nav').slick({
+                    slidesToShow: 3,
+                    slidesToScroll: 1,
+                    asNavFor: '.slider-for',
+                    dots: false,
+                    centerMode: true,
+                    focusOnSelect: true,
+                    variableWidth: true
+                });
+
             });
             
         </script>
